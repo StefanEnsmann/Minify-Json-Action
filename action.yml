@@ -11,9 +11,9 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: minify.py ${{ input_file }}
+    - run: minify.py ${{ inputs.input_file }}
       shell: python
-      if: ${{ github.event.inputs.output_file == ''}}
+      if: ${{ inputs.output_file == ''}}
     - run: minify.py ${{ input_file }} $ {{ output_file }}
       shell: python
-      if: ${{ github.event.inputs.output_file != ''}}
+      if: ${{ inputs.output_file != ''}}
