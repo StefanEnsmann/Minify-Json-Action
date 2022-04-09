@@ -11,6 +11,7 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
     - run: python minify.py ${{ inputs.input_file }}
       shell: bash
       if: ${{ inputs.output_file == ''}}
