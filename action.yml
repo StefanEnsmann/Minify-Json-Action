@@ -1,0 +1,19 @@
+name: 'Minify-JSON'
+author: 'Stefan Ensmann'
+description: 'Minify JSON files'
+inputs:
+  input_file:
+    description: 'The JSON file to minify'
+    required: true
+  output_file:
+    description: 'The path to write the minified JSON file to. Overrides the given file by default.'
+    required: false
+runs:
+  using: 'composite'
+  steps:
+    - run: minify.py ${{ input_file }}
+      shell: python
+      if: ${{ github.event.inputs.output_file == ''}}
+    - run: minify.py ${{ input_file }} $ {{ output_file }}
+      shell: python
+      if: ${{ github.event.inputs.output_file != ''}}
