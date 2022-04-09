@@ -14,6 +14,6 @@ runs:
     - run: python minify.py ${{ inputs.input_file }}
       shell: bash
       if: ${{ inputs.output_file == ''}}
-    - run: python minify.py ${{ inputs.input_file }} $ {{ inputs.output_file }}
+    - run: python minify.py ${{ inputs.input_file }} ${{ inputs.output_file }}
       shell: bash
       if: ${{ inputs.output_file != ''}}
